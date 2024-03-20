@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BF Suma Supplements</title>
+    <style>
+        /* Styles remain unchanged */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BF Suma Supplements</h1>
+    </header>
+    <nav>
+        <!-- Navigation Links Here -->
+    </nav>
+    <main>
+        <!-- Product Gallery and Supplement Information Table sections remain unchanged -->
+
+        <!-- New Contact Form Section -->
+        <section class="contact-form">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <input type="text" name="name" id="name" placeholder="Your Name" required>
+                <input type="email" name="email" id="email" placeholder="Your Email" required>
+                <textarea name="message" id="message" placeholder="Your Message" rows="4"></textarea>
+                <!-- Add an event listener to call the sendMessage function when the form is submitted -->
+                <button type="button" onclick="sendMessage()">Send Message</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <!-- Footer content remains the same -->
+    </footer>
+
+    <!-- Existing scripts remain unchanged -->
+    <script>
+        function sendMessage() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+
+            // You need to replace these values with your Twilio credentials and WhatsApp number
+            var accountSid = 'YOUR_TWILIO_ACCOUNT_SID';
+            var authToken = 'YOUR_TWILIO_AUTH_TOKEN';
+            var twilioNumber = 'YOUR_TWILIO_PHONE_NUMBER';
+            var recipientNumber = 'RECIPIENT_PHONE_NUMBER';
+
+            var url = 'https://api.twilio.com/2010-04-01/Accounts/' + accountSid + '/Messages.json';
+
+            var formData = new FormData();
+            formData.append('To', 'whatsapp:' + recipientNumber);
+            formData.append('From', 'whatsapp:' + twilioNumber);
+            formData.append('Body', 'Name: ' + name + '\nEmail: ' + email + '\nMessage: ' + message);
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Basic ' + btoa(accountSid + ':' + authToken)
+                },
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Message sent successfully!');
+                    document.getElementById("contactForm").reset();
+                } else {
+                    alert('Failed to send message. Please try again later.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to send message. Please try again later.');
+            });
+        }
+    </script>
+</body>
+</html>

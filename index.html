@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BF Suma Supplements</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #2ecc71; /* Green background color */
+        }
+
+        header, footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #f0f0f0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        section {
+            margin: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: auto;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .whatsapp-btn, .email-btn, .similar-products-btn {
+            background-color: #25d366;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .email-btn {
+            background-color: #3498db;
+        }
+
+        .email-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .similar-products-btn {
+            background-color: #9b59b6;
+        }
+
+        .similar-products-btn:hover {
+            background-color: #8e44ad;
+        }
+
+        .facebook-btn {
+            cursor: pointer;
+        }
+
+        /* New styles for the contact form */
+        .contact-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px auto; /* Center the form in the section */
+            max-width: 500px; /* Set a max-width for the form */
+        }
+
+        .contact-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .contact-form button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .contact-form button:hover {
+            background-color: #218c54;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BF Suma Supplements</h1>
+    </header>
+    <nav>
+        <!-- Navigation Links Here -->
+    </nav>
+    <main>
+        <section>
+            <h2>Product Gallery</h2>
+            <div class="gallery">
+                <img src="suma.jpg" alt="BF Suma Supplement 1" onclick="openModal('suma.jpg', 'BF Suma Supplement 1')">
+                <img src="relief.jpg" alt="BF Suma Supplement 2" onclick="openModal('relief.jpg', 'BF Suma Supplement 2')">
+                <img src="omega.jpg" alt="BF Suma Supplement 3" onclick="openModal('omega.jpg', 'BF Suma Supplement 3')">
+                <img src="probio.jpg" alt="BF Suma Supplement 4" onclick="openModal('probio.jpg', 'BF Suma Supplement 4')">
+                <img src="c.jpg" alt="BF Suma Supplement 5" onclick="openModal('c.jpg', 'BF Suma Supplement 5')">
+                <img src="ca.jpg" alt="BF Suma Calcium Supplement" onclick="openModal('ca.jpg', 'BF Suma Calcium Supplement')">
+                <img src="i.jpg" alt="BF Suma Iron Supplement" onclick="openModal('i.jpg', 'BF Suma Iron Supplement')">
+                <img src="m.jpg" alt="BF Suma Multivitamin" onclick="openModal('m.jpg', 'BF Suma Multivitamin')">
+                <img src="r.jpg" alt="BF Suma CoolRoll" onclick="openModal('r.jpg', 'BF Suma CoolRoll')">
+                <img src="z.jpg" alt="BF Suma Zinc Supplement" onclick="openModal('z.jpg', 'BF Suma Zinc Supplement')">
+            </div>
+        </section>
+        <section>
+            <h2>Supplement Information Table</h2>
+            <table>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                    <td>BF Suma Immune Booster</td>
+                    <td>Helps support immune system health</td>
+                    <td>$20</td>
+                </tr>
+                <tr>
+                    <td>BF Suma Pain Reliever</td>
+                    <td>Natural pain relief for joints and muscles</td>
+                    <td>$15</td>
+                </tr>
+                <tr>
+                    <td>BF Suma Omega-3</td>
+                    <td>Supports cardiovascular health</td>
+                    <td>$25</td>
+                </tr>
+                <tr>
+                    <td>BF Suma Probiotics</td>
+                    <td>Enhances digestive and gut health</td>
+                    <td>$18</td>
+                </tr>
+                <tr>
+                    <td>BF Suma Vitamin C</td>
+                    <td>Boosts immunity and skin health</td>
+                    <td>$12</td>
+                </tr>
+                <tr>
+                    <td>BF Suma Calcium Supplement</td>
+                    <td>Strengthens bones and teeth</td>
+                    <td>$18</td>
+                </tr>
+                <tr>
+                    <td>BF Suma Iron Supplement</td>
+                    <td>Helps prevent iron deficiency anemia</td>
+                    <td>$22</td>
+                </tr>
+                <tr>
+                    <td>BF Suma Multivitamin</td>
+                    <td>Provides essential vitamins and minerals</td>
+                    <td>$30</td>
+                </tr>
+                <tr>
+                    <td>BF Suma CoolRoll</td>
+                    <td>Feel Relax</td>
+                    <td>$27</td>
+                </tr>
+                <tr>
+                    <td>BF Suma Zinc Supplement</td>
+                    <td>Supports immune function and wound healing</td>
+                    <td>$16</td>
+                </tr>
+            </table>
+        </section>
+        <!-- Contact Form Section -->
+        <section class="contact-form">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="4"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 BF Suma Supplements. All rights reserved.</p>
+        <button class="whatsapp-btn" onclick="window.open('https://wa.me/254704524805')">WhatsApp Us</button>
+        <button class="email-btn" onclick="window.location.href = 'mailto:mwitisharon77@gmail.com'">Email Us</button>
+        <button class="similar-products-btn" onclick="window.location.href='https://shop.bfsuma.com/ke/'">Similar Products</button>
+        <img src="fb.png" alt="Facebook" class="facebook-btn" onclick="window.open('https://www.facebook.com/profile.php?id=100091433286048')">
+    </footer>
+
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        function openModal(imageSrc, altText) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("modalImage");
+
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+            modalImg.alt = altText;
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
